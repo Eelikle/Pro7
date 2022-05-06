@@ -5,6 +5,7 @@
     <form>
       <h3>Delete your Groupomania account!</h3>
       <h5>Are you sure? Your profile will be removed from Groupomania site!</h5>
+      <!-- FIXME user is undefined here -->
       <button @click.prevent="deleteUser(user.id)" class="btn" method="post">
         Delete user
       </button>
@@ -15,6 +16,7 @@
 export default {
   name: 'DeleteUser',
   data(){
+    // FIXME users is not used
     return{users:null}
   },
   methods:{
@@ -26,8 +28,11 @@ this.axios.get('http://localhost:3000/user').then((result)=>{
 })
     },
     deleteUser(id)
+    // TODO grab the currently logged on user id stored by login in Vuex store
     {
+      // TODO add JWT token to request header
       this.axios.delete("http://localhost:3000/user/"+id).then(()=>{
+        // TODO Vue code needs formatting (may need to install Vetur)
   this.getData();
    alert("successful");
       this.$router.push("/login");

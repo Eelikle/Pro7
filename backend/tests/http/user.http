@@ -26,5 +26,5 @@ content-type: application/json
 }
 
 ###
-    DELETE {{baseUrl}}/user/123
-
+DELETE {{baseUrl}}/user/123
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1MTg0MDgxMiwiZXhwIjoxNjUxOTI3MjEyfQ.PkQCMIDO2lNG_BX66N8wgkDXbxvIUj7-tnLnBaddank

@@ -34,6 +34,7 @@ export default {
           .then((result) => {
             console.warn(result.data.token);
             localStorage.setItem("token", result.data.token);
+            // TODO add user info to Vuex store (i.e. user ID)
             this.$router.push("/");
           });
       } catch (e) {

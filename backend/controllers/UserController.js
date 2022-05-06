@@ -78,9 +78,14 @@ exports.getAll = (req, res, next) => {
 }
 
 exports.delete = (req, res) => {
+  // FIXME verify req.token.userId === req.params.id to prevent hackers from deleting other user accounts
   db.User.destroy({
     where: {
       id: req.params.id
     }
-  }).then(() => res.send("success"));
+  }).then(
+    // TODO if number of rows delted is zero, then return error
+    (numOfRows) => res.send(`Number of rows deleted: ${numOfRows}`)
+  );
+  // FIXME need to catch errors
 };

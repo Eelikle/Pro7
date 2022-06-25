@@ -4,10 +4,10 @@
     <hr />
     <form>
       <h3>Delete your Groupomania account!</h3>
-      <!-- FIXME user is undefined here -->
-      <!-- <button @click.prevent="deleteUser(id)" class="btn" method="post">
+      <!-- FIXME 'id' is undefined here, so it can be removed -->
+      <button @click.prevent="deleteUser(id)" class="btn" method="post">
         Delete user
-      </button> -->
+      </button>
     </form>
   </div>
 </template>
@@ -16,6 +16,7 @@ export default {
   name: "DeleteUser",
   data() { },
   methods: {
+    // FIXME what does this method do for the page? Might not be needed...
     getData() {
       this.axios.get("http://localhost:3000/user").then((result) => {
         console.warn(result);
@@ -26,9 +27,17 @@ export default {
     deleteUser(id)
     // TODO grab the currently logged on user id stored by login in Vuex store
     {
+      // const userId = this.$store.getters.user;
       let response = confirm("are you sure?");
       if (response) {
         this.$store.dispatch("deleteUser", id);
+        // TODO recommend this approach
+        // const token = localStorage.getItem("token");
+        // const notifySuccess = () => {
+        //   alert("successful");
+        //   this.$router.push("/login");
+        // }
+        // this.$store.dispatch("deleteUser", {userId, token, notifySuccess});
       }
 
       // TODO add JWT token to request header
@@ -40,6 +49,8 @@ export default {
       //   }
       // );
 
+      // TODO this async business logic can be placed in a store action "deleteUser" since state will be changed (see above line 33)
+      //     then this axios call can be deleted
       this.axios.delete("http://localhost:3000/user/" + id).then(() => {
         // TODO Vue code needs formatting (may need to install Vetur)
         this.getData();

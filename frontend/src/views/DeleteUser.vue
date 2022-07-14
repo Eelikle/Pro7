@@ -19,6 +19,8 @@ export default {
       const userId = this.$store.getters.userId;
       let response = confirm("are you sure?");
       if (response) {
+        // FIXME the login view component needs to store the JWT token returned for the token here to be found
+        // and after that is fixed, this next line will find a token
         const token = localStorage.getItem("token");
         const notifySuccess = () => {
           alert("successful");

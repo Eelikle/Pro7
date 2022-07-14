@@ -34,6 +34,8 @@ export default {
             password: this.password,
           })
           .then((result) => {
+            // FIXME the "name" property here is holder the same user id the "id" is, remove it or assign the user name if needed
+            // FIXME the JWT token is no longer being stored in the browser's local storage (and things like delete user will not work)
             this.$store.dispatch('login', { name: result.data.userId, id: result.data.userId });
             this.$router.push("/");
           });

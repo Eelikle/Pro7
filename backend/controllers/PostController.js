@@ -11,6 +11,7 @@ exports.createPost = async (req, res, next) => {
         //TODO: add image
       });
 
+      // FIXME: handle case when there is no file
       await File.create({
         name: req.files.file.name.split('.')[0],
         data: req.files.file.data,
@@ -29,6 +30,7 @@ exports.createPost = async (req, res, next) => {
     } catch (error) {
       console.log(error);
       res.status(400).json({
+        // FIXME suggest use "error.message" here
         error: error,
       }); 
     }
@@ -203,15 +205,20 @@ exports.registerView = async (req, res) => {
     
     console.log('post', post)
     if(!post){
+      // FIXME is this an error or success?
       return res.status(201).send({ error: 'OK'});
     }
     // 2. Check if user exists in views
     let { views } = post
     console.log(views)
+    // FIXME need to handle when views is null
     views = views.includes(userId) ? views : [...views, userId]
     // 3. Update post views list
+    // FIXME the where condition should be second, values come first
     Post.update({ where: { id : postId } }, { views })
+    // FIXME need to return a success response code (and maybe message)
   } catch (error) {
+    console.log(error.message)
     return res.status(500).send({ error: 'An error occured'})
   }
 }

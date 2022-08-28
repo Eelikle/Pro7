@@ -16,6 +16,7 @@ const Post = sequelize.define(
       type: Sequelize.DATE,
     },
     views: {
+      // FIXME this is the wrong datatype for PostgreSQL integer array column type, should be Sequelize.ARRAY(Sequelize.INTEGER)
       type: Sequelize.JSON
     }
   },

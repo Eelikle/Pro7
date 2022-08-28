@@ -5,11 +5,52 @@ GET {{baseUrl}}/
 
 ###
 
-# adds a new posts
+# adds a new post with NO multimedia
 POST {{baseUrl}}/add
-content-type: application/json
+Content-Type: multipart/form-data; boundary=----BOUNDARY
+
+------BOUNDARY
+Content-Disposition: form-data; name="file"
+
+null
+------BOUNDARY
+Content-Disposition: form-data; name="post"
+
+I'm a test tweet
+------BOUNDARY
+Content-Disposition: form-data; name="user"
+
+17
+------BOUNDARY--
+
+###
+
+# adds a new post with multimedia
+POST {{baseUrl}}/add
+Content-Type: multipart/form-data; boundary=----BOUNDARY
+
+------BOUNDARY
+Content-Disposition: form-data; name="file"; filename="umbrella-svgrepo-com.svg"
+Content-Type: image/png
+
+< ./data/umbrella-svgrepo-com.svg
+------BOUNDARY
+Content-Disposition: form-data; name="post"
+
+I'm a test tweet
+------BOUNDARY
+Content-Disposition: form-data; name="user"
+
+17
+------BOUNDARY--
+
+###
+
+# registers a view for a post
+POST {{baseUrl}}/view
+Content-Type: application/json
 
 {
-    "message": "Test post",
-    "userId": 8,
+    "userId": 17,
+    "postId": 15
 }

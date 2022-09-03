@@ -1,5 +1,10 @@
 <template>
+  <!-- TODO format HTML -->
     <div v-on:click="click()" class="post">
+      <!-- TODO indicate somewhere if this post was viewed or not
+          by the currently logged in user...need to check the post.views
+          integer array to see if the currently logged in user's Id is in
+          it -->
         <div class="post-user-info">
         <div class="post-user-image">
           <img class="user-image" :src="getUserImage" />

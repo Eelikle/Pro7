@@ -2,6 +2,9 @@
   <div class="post-feed">
     <h2>Your timeline</h2>
     <div class="post-item" v-for="post in posts" :key="post.id">
+      <!-- TODO if you want to show your post tweet modal here,
+      then need to use v-if that checkes "showModal" if true, see line 73 for example here:
+      https://github.com/Dillonsmart/vue-quickstart/blob/main/src/views/Home.vue#L73 -->
       <PostItem :post="post" :onclick="onClickPost" />
     </div>
   </div>
@@ -14,6 +17,8 @@ export default {
   props: ["posts"],
   data() {
     return {
+      // FIXME when this component first loads, no need to show modal until user clicks post,
+      // so set this first to "false"
       showModal: true,
     };
   },

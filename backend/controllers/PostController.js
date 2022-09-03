@@ -216,10 +216,14 @@ exports.registerView = async (req, res) => {
       return res.status(200).send({ message: 'View already registered' });
     }
     // 3. Update post views list
+    // FIXME improper usage of "where clause" on update, please see here:
+    // https://sequelize.org/docs/v6/core-concepts/model-querying-basics/#simple-update-queries
     await Post.update({ id: postId  }, { views: [...views, userId] });
     res.status(200).send({ success: 'OK' });
   } catch (error) {
     console.log(error);
+    // TODO if you change "An error occured" to error.message --
+    // then the user error response will be more precise
     return res.status(500).send({ error: 'An error occured' })
   }
 }

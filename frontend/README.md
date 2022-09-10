@@ -22,8 +22,3 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
-
-# backend 
-
-### set up database
-please run this sql /backend/sql/ to create the tables

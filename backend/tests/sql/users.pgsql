@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS "Users";
+
 CREATE TABLE "Users"(
    "id" serial PRIMARY KEY,
    "fullName" VARCHAR (255) NOT NULL,
@@ -8,5 +10,5 @@ CREATE TABLE "Users"(
    "updatedAt" TIMESTAMP
 );
 
-INSERT INTO "Users" ("fullName", "email", "password", "isAdmin", "createdAt", "updatedAt")
-VALUES ('John Doe', 'john.doe@company.com', 'secret456', FALSE, current_timestamp, current_timestamp);
+-- INSERT INTO "Users" ("fullName", "email", "password", "isAdmin", "createdAt", "updatedAt")
+-- VALUES ('John Doe', 'john.doe@company.com', 'secret456', FALSE, current_timestamp, current_timestamp);

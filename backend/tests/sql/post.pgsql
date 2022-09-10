@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS "Posts";
+
 CREATE TABLE "Posts"(
    "id" INT GENERATED ALWAYS AS IDENTITY, -- This creates a unique identifier for each post
    "userId" INT, -- postgressql hates capital letters, to be able to use them, dont forget to add double quotes around the column name
